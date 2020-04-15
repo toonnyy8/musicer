@@ -1,0 +1,33 @@
+{
+  "name": "musicer",
+  "version": "1.0.0",
+  "description": "隨彈樂器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel ./index.html -p 8080 --open",
+    "css": "npx tailwindcss build ./src/css/index.css -o ./src/css/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toonnyy8/musicer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toonnyy8/musicer/issues"
+  },
+  "homepage": "https://github.com/toonnyy8/musicer#readme",
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "parcel": "^1.12.4",
+    "regenerator-runtime": "^0.13.3",
+    "tailwindcss": "^1.2.0",
+    "tone": "^13.8.25"
+  },
+  "devDependencies": {
+    "@types/tone": "git://github.com/Tonejs/TypeScript.git",
+    "typescript": "^3.7.5"
+  }
+}
