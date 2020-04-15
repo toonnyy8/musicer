@@ -66,6 +66,10 @@ import * as Tone from "tone"
 //     })
 //     // synth.voices[0].frequency.value = 0
 // })
+document.oncontextmenu = function () {
+    window.event.returnValue = false; //將滑鼠右鍵事件取消
+}
+
 
 let colors = ["yellow", "orange", "red", "pink", "purple", "blue", "teal", "green"]
 
@@ -95,5 +99,6 @@ colors.forEach((color) => {
         container.appendChild(button)
     }
 })
-
+document.body.classList.add("flex")
+document.body.classList.add("justify-center")
 document.body.appendChild(container)
