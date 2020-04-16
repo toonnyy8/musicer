@@ -110,9 +110,12 @@ colors.forEach((color, idx) => {
         button.onpointerdown = () => {
             console.log(`${tunes[idx]}${(5 - i) + 2}`)
             polySynth.triggerAttack([`${tunes[idx]}${(5 - i) + 2}`])
-
         }
         button.onpointerup = () => {
+            polySynth.triggerRelease([`${tunes[idx]}${(5 - i) + 2}`])
+            console.log(polySynth.get()["oscillator"])
+        }
+        button.onpointerleave = () => {
             polySynth.triggerRelease([`${tunes[idx]}${(5 - i) + 2}`])
             console.log(polySynth.get()["oscillator"])
         }
