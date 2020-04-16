@@ -70,33 +70,52 @@ document.oncontextmenu = function () {
     window.event.returnValue = false; //將滑鼠右鍵事件取消
 }
 
+let tunes = ["C", "D", "E", "F", "G", "A", "B"]
+let colors = ["yellow", "orange", "red", "pink", "purple", "blue", "teal"]
 
-let colors = ["yellow", "orange", "red", "pink", "purple", "blue", "teal", "green"]
-
-let container = document.createElement("div")// <HTMLDivElement>document.getElementById("container")
+let container = document.createElement("div")
 {
-    container.classList.add("w-160")
-    container.classList.add("h-120")
+    container.classList.add("w-168")
+    container.classList.add("h-144")
     container.classList.add("grid")
     container.classList.add("grid-rows-6")
     container.classList.add("grid-flow-col")
     container.classList.add("gap-0")
     container.classList.add("col-gap-0")
 }
-colors.forEach((color) => {
-    for (let i = 3; i < 9; i++) {
+colors.forEach((color, idx) => {
+    for (let i = 0; i < 6; i++) {
         let button = document.createElement("button")
-        button.classList.add("w-20")
-        button.classList.add("h-20")
+        button.classList.add("w-24")
+        button.classList.add("h-24")
         button.classList.add("focus:outline-none")
-        button.classList.add(`bg-${color}-${i}00`)
+        button.classList.add(`bg-${color}-${i + 3}00`)
         button.classList.add(`_nmp_`)
         button.classList.add(`-nmp_src--lt`)
-        button.classList.add(`active:-nmp_light--${color}-${i - 1}00`)
-        button.classList.add(`active:-nmp_shadow--${color}-${i + 1}00`)
+        button.classList.add(`active:-nmp_light--${color}-${i + 3 - 1}00`)
+        button.classList.add(`active:-nmp_shadow--${color}-${i + 3 + 1}00`)
         button.classList.add(`-nmp_dist--xs`)
-        button.classList.add(`active:-nmp_shape--inner`)
+        button.classList.add(`-nmp_shape--inner`)
         container.appendChild(button)
+
+        let polySynth = new Tone.PolySynth(4, Tone.Synth).set({
+            oscillator: {
+                type: "sine",
+                // partials: new Array(441).fill(1).map((value, index) => value / (index + 1))
+            }
+        }).toMaster()
+
+        //play a middle 'C' for the duration of an 8th note
+
+        button.onpointerdown = () => {
+            console.log(`${tunes[idx]}${(5 - i) + 2}`)
+            polySynth.triggerAttack([`${tunes[idx]}${(5 - i) + 2}`])
+
+        }
+        button.onpointerup = () => {
+            polySynth.triggerRelease([`${tunes[idx]}${(5 - i) + 2}`])
+            console.log(polySynth.get()["oscillator"])
+        }
     }
 })
 document.body.classList.add("flex")
