@@ -22,7 +22,7 @@
   "homepage": "https://github.com/toonnyy8/musicer#readme",
   "dependencies": {
     "core-js": "^3.6.4",
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "regenerator-runtime": "^0.13.3",
     "tailwindcss": "^1.2.0",
     "tone": "^13.8.25"
